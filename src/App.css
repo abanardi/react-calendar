@@ -16,10 +16,31 @@
 .day {
   margin: 0;
   border-style: solid;
-  border-width: medium;
-  border-color: coral;
+  border-width:thin;
+  border-color: white;
+  background-color: gray;
   width: 5rem;
   height: 5rem;
+}
+
+.today{
+  background-color: orangered;
+}
+
+.event-today{
+  border-color: rebeccapurple;
+  border-width: thick;
+}
+
+.selected{
+  background-color: royalblue;
+}
+
+.day-name{
+  margin: 0;
+  text-align: center;
+  background-color: gray;
+  color: white;
 }
 
 .month-panel{
@@ -38,3 +59,4 @@
 .number{
   text-align: center;
 }
+

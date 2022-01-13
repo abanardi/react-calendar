@@ -1,9 +1,9 @@
-import React from 'react'
+/** @format */
 
-const Button = () => {
-    return (
-        <button className='btn btn-primary'>Button</button>
-    )
-}
+import React from 'react';
 
-export default Button
+const Button = ({ innerText, onClick }) => {
+  return <button className="btn btn-primary">Button</button>;
+};
+
+export default Button;
