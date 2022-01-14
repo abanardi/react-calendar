@@ -4,6 +4,7 @@ import React from 'react';
 import Day from './Day';
 
 const DayPanel = () => {
+
   return (
     <div className="day-panel">
       <p className="day-name">Sun</p>
@@ -13,7 +14,7 @@ const DayPanel = () => {
       <p className="day-name">Thu</p>
       <p className="day-name">Fri</p>
       <p className="day-name">Sat</p>
-      <Day date="15" today={true} eventToday={true} />
+      <Day date="" eventToday={true} />
       <Day />
       <Day />
       <Day />
@@ -22,7 +23,7 @@ const DayPanel = () => {
       <Day />
       <Day />
       <Day />
-      <Day />
+      <Day today={true}/>
       <Day />
       <Day eventToday={true} />
       <Day />
@@ -37,16 +38,16 @@ const DayPanel = () => {
       <Day />
       <Day />
       <Day />
+      <Day eventToday={true}/>
       <Day />
       <Day />
       <Day />
       <Day />
+      <Day eventToday={true}/>
       <Day />
       <Day />
       <Day />
-      <Day />
-      <Day />
-      <Day />
+      <Day eventToday={true}/>
       <Day />
     </div>
   );
