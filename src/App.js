@@ -52,8 +52,8 @@ function App() {
 
   function selectDate(date) {
     // setSelectedIndex(19);
-    const outside = document.querySelector
-    console.log();
+    // const outside = document.querySelector
+    console.log('hello');
   }
 
   useEffect(() => {
@@ -82,10 +82,10 @@ function App() {
           ' ' +
           dt.getFullYear()
         }
-        selectDate={selectDate}
+        setSelectedIndex={setSelectedIndex}
       />
     </div>
   );
 }
 
-export default App;
+export default App ;

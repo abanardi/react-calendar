@@ -70,8 +70,17 @@
   margin: 0;
 }
 
-
 .other-month{
   filter: brightness(55%);
 }
 
+.month-title, .full-date{
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.previous-button{
+  margin-right: 5rem;
+}
