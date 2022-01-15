@@ -4,7 +4,8 @@
 }
 
 .container {
-  background-color: skyblue;
+  padding: 0;
+  background-color: #496F5D;
   min-width: fit-content;
   width: fit-content;
 }
@@ -17,19 +18,27 @@
   margin: 0;
   border-style: solid;
   border-width:thin;
-  border-color: white;
-  background-color: gray;
+  color: white;
+  border-color: #8D98A7;
+  background-color: #2D3047;
   width: 5rem;
   height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day:hover{
+  filter: brightness(85%);
 }
 
 .today{
-  background-color: orangered;
+  background-color: #E44643;
 }
 
 .event-today{
-  border-color: rebeccapurple;
-  border-width: thick;
+  border-color: #F0C987;
+  border-width: medium;
 }
 
 .selected{
@@ -52,11 +61,16 @@
 .day-panel {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
-  background-color: springgreen;
   justify-content: center;
 }
 
 .number{
   text-align: center;
+  margin: 0;
+}
+
+
+.other-month{
+  filter: brightness(55%);
 }
 

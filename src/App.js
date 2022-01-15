@@ -8,17 +8,32 @@ import renderCalendar from './render';
 
 function App() {
   const [days, setDays] = useState([]);
+  const dt = new Date();
+  const [year, setYear] = useState(dt.getFullYear());
+    const [month, setMonth] = useState(dt.getMonth());
+
+  function switchNexthMonth(){    
+    setMonth(month+1);
+    console.log('Next');
+  }
+
+  function switchPreviousMonth(){
+    setMonth(month-1);
+    console.log('Previous');
+  }
 
   useEffect(()=>{
-    const newDays = renderCalendar(2022,0);
+    const newDays = renderCalendar(year,month);
     setDays(newDays);
-  }, [])
+  }, [year, month])
 
-  console.log(days);
+  // console.log(year);
+  // console.log(month);
+  // console.log(days);
 
   return (
     <div className="App">
-      <CalendarPanel />
+      <CalendarPanel daysList={days} switchNext={switchNexthMonth} switchPrevious={switchPreviousMonth}/>
     </div>
   );
 }

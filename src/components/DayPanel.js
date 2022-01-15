@@ -3,7 +3,7 @@
 import React from 'react';
 import Day from './Day';
 
-const DayPanel = () => {
+const DayPanel = ({ daysList }) => {
 
   return (
     <div className="day-panel">
@@ -14,41 +14,16 @@ const DayPanel = () => {
       <p className="day-name">Thu</p>
       <p className="day-name">Fri</p>
       <p className="day-name">Sat</p>
-      <Day date="" eventToday={true} />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day today={true}/>
-      <Day />
-      <Day eventToday={true} />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day eventToday={true}/>
-      <Day />
-      <Day />
-      <Day />
-      <Day />
-      <Day eventToday={true}/>
-      <Day />
-      <Day />
-      <Day />
-      <Day eventToday={true}/>
-      <Day />
+
+      {daysList.map((day) => (
+        <Day
+          date={day.date}
+          currentMonth={day.currentMonth}
+          eventToday={day.eventToday}
+          selected={day.selected}
+          today={day.today}
+        />
+      ))}
     </div>
   );
 };

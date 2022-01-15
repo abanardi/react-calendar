@@ -1,6 +1,7 @@
 /** @format */
 
 function renderCalendar(year, monthIndex) {
+  const dt = new Date(year, monthIndex);
   // 0 of the monthIndex is January because of how date and time work
 
   // Number of days current month
@@ -105,6 +106,12 @@ function renderCalendar(year, monthIndex) {
     };
     allDays.push(day);
   });
+
+  console.log(dt);
+  console.log(dt.getFullYear());
+  console.log(dt.getMonth());
+
+
 
   return allDays;
 }
