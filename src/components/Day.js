@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const Day = ({ date, currentMonth, eventToday, selected, today }) => {
+const Day = ({ date, currentMonth, eventToday, selected, today, onClick }) => {
   let conditions = 'container day';
 
   if (today) {
@@ -18,7 +18,7 @@ const Day = ({ date, currentMonth, eventToday, selected, today }) => {
   }
 
   return (
-    <div className={conditions}>
+    <div className={conditions} onClick={onClick}>
       <p className={currentMonth ? 'number' : 'number other-month'}>{date}</p>
     </div>
   );

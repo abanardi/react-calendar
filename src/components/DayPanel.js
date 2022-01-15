@@ -3,8 +3,8 @@
 import React from 'react';
 import Day from './Day';
 
-const DayPanel = ({ daysList }) => {
-
+const DayPanel = ({ daysList, selectDate }) => {
+  
   return (
     <div className="day-panel">
       <p className="day-name">Sun</p>
@@ -22,6 +22,7 @@ const DayPanel = ({ daysList }) => {
           eventToday={day.eventToday}
           selected={day.selected}
           today={day.today}
+          onClick={day.currentMonth ? selectDate : null}
         />
       ))}
     </div>

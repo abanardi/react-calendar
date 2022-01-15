@@ -30,6 +30,7 @@
 
 .day:hover{
   filter: brightness(85%);
+  cursor: pointer;
 }
 
 .today{

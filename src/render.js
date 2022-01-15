@@ -1,6 +1,31 @@
 /** @format */
 
-function renderCalendar(year, monthIndex) {
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const dayNames = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+]
+
+function renderCalendar(year, monthIndex, selectedIndex) {
   const dt = new Date(year, monthIndex);
   // 0 of the monthIndex is January because of how date and time work
 
@@ -72,25 +97,31 @@ function renderCalendar(year, monthIndex) {
 
   currentDays.forEach((date) => {
     // console.log(date);
+
     if (
       currentLocalDay.getMonth() === monthIndex &&
       currentLocalDay.getDate() === date
     ) {
-      var day = {
-        date: date,
-        currentMonth: true,
-        eventToday: false,
-        selected: false,
-        today: true,
-      };
-    } else {
-      var day = {
-        date: date,
-        currentMonth: true,
-        eventToday: false,
-        selected: false,
-        today: false,
-      };
+      var today = true;
+    } else{
+      today = false;
+    }
+
+    if(date === selectedIndex){
+      var selected = true; 
+    }else{
+      selected = false;
+    }
+
+    // console.log(today);
+
+    
+    const day = {
+      date: date,
+      currentMonth: true,
+      eventToday: false,
+      selected: selected,
+      today: today,
     }
     allDays.push(day);
   });
@@ -107,11 +138,10 @@ function renderCalendar(year, monthIndex) {
     allDays.push(day);
   });
 
-  console.log(dt);
-  console.log(dt.getFullYear());
-  console.log(dt.getMonth());
-
-
+  // console.log(dt);
+  // console.log(dayNames[dt.getDay()]);
+  // console.log(monthNames[dt.getMonth()]);
+  // console.log(dt.getFullYear());
 
   return allDays;
 }

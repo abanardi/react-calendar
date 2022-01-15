@@ -6,34 +6,84 @@ import CalendarPanel from './components/CalendarPanel';
 import { useEffect, useState, createContext } from 'react';
 import renderCalendar from './render';
 
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const dayNames = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
 function App() {
   const [days, setDays] = useState([]);
   const dt = new Date();
   const [year, setYear] = useState(dt.getFullYear());
-    const [month, setMonth] = useState(dt.getMonth());
+  const [month, setMonth] = useState(dt.getMonth());
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
-  function switchNexthMonth(){    
-    setMonth(month+1);
-    console.log('Next');
+  function switchNextMonth() {
+    setSelectedIndex(null);
+    setMonth(month + 1);
+    // console.log('Next');
   }
 
-  function switchPreviousMonth(){
-    setMonth(month-1);
-    console.log('Previous');
+  function switchPreviousMonth() {
+    setSelectedIndex(null);
+    setMonth(month - 1);
+    // console.log('Previous');
   }
 
-  useEffect(()=>{
-    const newDays = renderCalendar(year,month);
+  function selectDate(date) {
+    // setSelectedIndex(19);
+    const outside = document.querySelector
+    console.log();
+  }
+
+  useEffect(() => {
+    const newDays = renderCalendar(year, month, selectedIndex);
     setDays(newDays);
-  }, [year, month])
+  }, [year, month, selectedIndex]);
 
+  const selectedDate = new Date(year, month);
   // console.log(year);
   // console.log(month);
   // console.log(days);
 
   return (
     <div className="App">
-      <CalendarPanel daysList={days} switchNext={switchNexthMonth} switchPrevious={switchPreviousMonth}/>
+      <CalendarPanel
+        daysList={days}
+        switchNext={switchNextMonth}
+        switchPrevious={switchPreviousMonth}
+        selectedMonth={monthNames[selectedDate.getMonth()] + ' ' + selectedDate.getFullYear()}
+        selectedDate={
+          dayNames[dt.getDay()] +
+          ', ' +
+          monthNames[dt.getMonth()] +
+          ' ' +
+          dt.getDate() +
+          ' ' +
+          dt.getFullYear()
+        }
+        selectDate={selectDate}
+      />
     </div>
   );
 }
