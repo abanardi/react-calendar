@@ -5,7 +5,7 @@
 
 .container {
   padding: 0;
-  background-color: #496F5D;
+  background-color: #457b9d;
   min-width: fit-content;
   width: fit-content;
 }
@@ -17,10 +17,10 @@
 .day {
   margin: 0;
   border-style: solid;
-  border-width:thin;
+  border-width: thin;
   color: white;
-  border-color: #8D98A7;
-  background-color: #2D3047;
+  border-color: #8d98a7;
+  background-color: #1d3557;
   width: 5rem;
   height: 5rem;
   display: flex;
@@ -28,32 +28,31 @@
   justify-content: center;
 }
 
-.day:hover{
+.day:hover {
   filter: brightness(85%);
   cursor: pointer;
 }
 
-.today{
-  background-color: #E44643;
+.today {
+  background-color: #e44643;
 }
 
-.event-today{
-  border-color: #F0C987;
+.event-today {
+  border-color: #f0c987;
   border-width: medium;
 }
 
-.selected{
-  background-color: royalblue;
+.selected {
+  background-color: #414833;
 }
 
-.day-name{
+.day-name {
   margin: 0;
   text-align: center;
-  background-color: gray;
   color: white;
 }
 
-.month-panel{
+.month-panel {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,22 +64,45 @@
   justify-content: center;
 }
 
-.number{
+.number {
   text-align: center;
   margin: 0;
 }
 
-.other-month{
+.other-month {
   filter: brightness(55%);
 }
 
-.month-title, .full-date{
+.month-title,
+.full-date {
   color: white;
   text-align: center;
   font-weight: bold;
   font-size: x-large;
 }
 
-.previous-button{
-  margin-right: 5rem;
+.previous-button,
+.next-button {
+  color: white;
+  background-color: #2d3047;
+}
+
+.previous-button:hover,
+.next-button:hover {
+  color: white;
+  filter: brightness(85%);
+}
+
+.btn:focus,
+.btn:active {
+  box-shadow: none;
+  outline: 0px;
+}
+
+.previous-button {
+  margin-right: 2rem;
+}
+
+.next-button {
+  margin-left: 2rem;
 }
