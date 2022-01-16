@@ -122,7 +122,7 @@
 .event-panel {
   margin: 0;
   width: 35rem;
-  height: 50rem;
+  height: 75vh;
   background-color: #495867;
   min-width: 20rem;
 }
