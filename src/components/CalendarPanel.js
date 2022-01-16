@@ -7,7 +7,7 @@ import DayPanel from './DayPanel';
 const CalendarPanel = ({ daysList, switchNext, switchPrevious, selectedMonth, selectedDate, setSelectedIndex }) => {
   
   return (
-    <div className="container">
+    <div className="calendar-panel container">
       <div className="month-panel">
         <Button className='previous-button' innerText="Previous" onClick={switchPrevious} />
         <div className="month-panel-center">

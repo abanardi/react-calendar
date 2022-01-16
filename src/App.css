@@ -1,6 +1,16 @@
 /** @format */
 
-.btn-primary {
+.App {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  background-color: #202020;
+}
+
+.calendar-panel {
+  margin: 0;
 }
 
 .container {
@@ -105,4 +115,56 @@
 
 .next-button {
   margin-left: 2rem;
+}
+
+/* Event Panel */
+
+.event-panel {
+  margin: 0;
+  width: 35rem;
+  height: 50rem;
+  background-color: #495867;
+  min-width: 20rem;
+}
+
+.event-date {
+  text-align: center;
+  color: white;
+}
+
+.event-time,
+.event-text {
+  color: white;
+  margin-left: 1rem;
+}
+
+.event-time {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.event-text {
+  margin-top: 0;
+  font-size: x-large;
+}
+
+.time-delete {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.delete-event {
+  color: #ff002b;
+  cursor: pointer;
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+.invisible {
+  display: none;
 }

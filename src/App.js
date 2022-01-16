@@ -5,6 +5,7 @@ import Button from './components/Button';
 import CalendarPanel from './components/CalendarPanel';
 import { useEffect, useState, createContext } from 'react';
 import renderCalendar from './render';
+import EventPanel from './components/EventPanel';
 
 const monthNames = [
   'January',
@@ -37,6 +38,7 @@ function App() {
   const [year, setYear] = useState(dt.getFullYear());
   const [month, setMonth] = useState(dt.getMonth());
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [events, setEvents] = useState([]);
 
   function switchNextMonth() {
     setSelectedIndex(null);
@@ -84,6 +86,7 @@ function App() {
         }
         setSelectedIndex={setSelectedIndex}
       />
+      <EventPanel visible={true}/>
     </div>
   );
 }
