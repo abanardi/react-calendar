@@ -81,8 +81,6 @@ function App() {
   useEffect(() => {
     const newDays = renderCalendar(year, month, selectedIndex);
     const date = new Date(year, month);
-    console.log(date.getMonth());
-    console.log(date.getFullYear());
 
     const displayMonth = date.getMonth() + 1;
     const displayYear = date.getFullYear();

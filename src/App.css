@@ -6,12 +6,15 @@
   align-items: center;
   justify-content: space-evenly;
   height: 100vh;
+  min-height: fit-content;
   min-width: fit-content;
   background-color: #202020;
+  overflow: auto;
 }
 
 .calendar-panel {
   margin: 0;
+  margin-left: 1rem;
 }
 
 .container {
@@ -126,6 +129,9 @@
   height: 75vh;
   background-color: #495867;
   min-width: 20rem;
+  margin-left: 2rem;
+  margin-right: 1rem;
+  overflow: auto;
 }
 
 .event-date {
