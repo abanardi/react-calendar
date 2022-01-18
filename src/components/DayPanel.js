@@ -17,6 +17,7 @@ const DayPanel = ({ daysList, setSelectedIndex }) => {
 
       {daysList.map((day) => (
         <Day
+          key={day.id}
           date={day.date}
           currentMonth={day.currentMonth}
           eventToday={day.eventToday}

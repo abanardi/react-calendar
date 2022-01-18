@@ -2,7 +2,14 @@
 
 import React from 'react';
 
-const Day = ({ date, currentMonth, eventToday, selected, today, setSelectedIndex }) => {
+const Day = ({
+  date,
+  currentMonth,
+  eventToday,
+  selected,
+  today,
+  setSelectedIndex,
+}) => {
   let conditions = 'container day';
 
   if (today) {
@@ -18,7 +25,16 @@ const Day = ({ date, currentMonth, eventToday, selected, today, setSelectedIndex
   }
 
   return (
-    <div className={conditions} onClick={currentMonth ? ()=>{setSelectedIndex(date); console.log('Clicked')} : null}>
+    <div
+      className={conditions}
+      onClick={
+        currentMonth
+          ? () => {
+              setSelectedIndex(date);
+            }
+          : null
+      }
+    >
       <p className={currentMonth ? 'number' : 'number other-month'}>{date}</p>
     </div>
   );

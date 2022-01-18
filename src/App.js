@@ -6,6 +6,8 @@ import CalendarPanel from './components/CalendarPanel';
 import { useEffect, useState, createContext } from 'react';
 import renderCalendar from './render';
 import EventPanel from './components/EventPanel';
+import { db } from './firebase-config';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 
 const monthNames = [
   'January',
@@ -39,6 +41,30 @@ function App() {
   const [month, setMonth] = useState(dt.getMonth());
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [events, setEvents] = useState([]);
+  const [eventDate, setEventDate] = useState('');
+
+  function renderEvents() {
+    async function grabData() {
+      const eventsDay = collection(db, 'Year/2022/January/sixteen/events');
+      // console.log(eventsDay);
+      const eventsSnap = await getDocs(eventsDay);
+      const allEvents = eventsSnap.docs
+        .map((doc) => doc.data())
+        .map((event) => ({ ...event, time: event.time.seconds }))
+        .sort((a, b) => (a.time > b.time ? 1 : -1));
+
+      // console.log(allEvents[0].time);
+      const time = new Date(allEvents[0].time);
+      // console.log(time.getHours());
+      // console.log(time.getMinutes());
+      // console.log(time);
+      // console.log(time.getHours());
+      // console.log(time.getMinutes());
+
+      setEvents(allEvents);
+    }
+    grabData();
+  }
 
   function switchNextMonth() {
     setSelectedIndex(null);
@@ -52,14 +78,17 @@ function App() {
     // console.log('Previous');
   }
 
-  function selectDate(date) {
-    // setSelectedIndex(19);
-    // const outside = document.querySelector
-    console.log('hello');
-  }
-
   useEffect(() => {
     const newDays = renderCalendar(year, month, selectedIndex);
+    const date = new Date(year, month);
+    console.log(date.getMonth());
+    console.log(date.getFullYear());
+
+    const displayMonth = date.getMonth() + 1;
+    const displayYear = date.getFullYear();
+
+    setEventDate(displayMonth + '/' + selectedIndex + '/' + displayYear);
+    renderEvents();
     setDays(newDays);
   }, [year, month, selectedIndex]);
 
@@ -74,7 +103,9 @@ function App() {
         daysList={days}
         switchNext={switchNextMonth}
         switchPrevious={switchPreviousMonth}
-        selectedMonth={monthNames[selectedDate.getMonth()] + ' ' + selectedDate.getFullYear()}
+        selectedMonth={
+          monthNames[selectedDate.getMonth()] + ' ' + selectedDate.getFullYear()
+        }
         selectedDate={
           dayNames[dt.getDay()] +
           ', ' +
@@ -86,9 +117,9 @@ function App() {
         }
         setSelectedIndex={setSelectedIndex}
       />
-      <EventPanel visible={true}/>
+      <EventPanel events={events} visible={true} date={eventDate} />
     </div>
   );
 }
 
-export default App ;
+export default App;

@@ -79,10 +79,12 @@ function renderCalendar(year, monthIndex, selectedIndex) {
   // console.log(nextDays);
 
   const allDays = []; //Holds all the days including previous and next month;
+  let calendarDay = 0; // Goes from 0-35 (sometimes 28 or 42). 0 stands for the top left corner
 
   previousDays.forEach((date) => {
     // console.log(date);
     const day = {
+      id: calendarDay,
       date: date,
       currentMonth: false,
       eventToday: false,
@@ -90,11 +92,12 @@ function renderCalendar(year, monthIndex, selectedIndex) {
       today: false,
     };
     allDays.push(day);
+    calendarDay +=1;
   });
 
   const currentLocalDay = new Date();
   // console.log(currentLocalDay.getMonth());
-
+   
   currentDays.forEach((date) => {
     // console.log(date);
 
@@ -117,6 +120,7 @@ function renderCalendar(year, monthIndex, selectedIndex) {
 
     
     const day = {
+      id: calendarDay,
       date: date,
       currentMonth: true,
       eventToday: false,
@@ -124,11 +128,13 @@ function renderCalendar(year, monthIndex, selectedIndex) {
       today: today,
     }
     allDays.push(day);
+    calendarDay +=1;
   });
 
   nextDays.forEach((date) => {
     // console.log(date);
     const day = {
+      id: calendarDay,
       date: date,
       currentMonth: false,
       eventToday: false,
@@ -136,8 +142,10 @@ function renderCalendar(year, monthIndex, selectedIndex) {
       today: false,
     };
     allDays.push(day);
+    calendarDay +=1;
   });
 
+  // console.log(allDays);
   // console.log(dt);
   // console.log(dayNames[dt.getDay()]);
   // console.log(monthNames[dt.getMonth()]);
@@ -145,5 +153,7 @@ function renderCalendar(year, monthIndex, selectedIndex) {
 
   return allDays;
 }
+
+
 
 export default renderCalendar;
