@@ -4,8 +4,8 @@ import React from 'react';
 import Button from './Button';
 import DayPanel from './DayPanel';
 
-const CalendarPanel = ({ daysList, switchNext, switchPrevious, selectedMonth, selectedDate, setSelectedIndex }) => {
-  
+const CalendarPanel = ({ daysList, switchNext, switchPrevious, selectedMonth, selectedDate, setSelectedIndex, selectedIndex, setVisible }) => {
+
   return (
     <div className="calendar-panel container">
       <div className="month-panel">
@@ -16,7 +16,7 @@ const CalendarPanel = ({ daysList, switchNext, switchPrevious, selectedMonth, se
         </div>
         <Button className='next-button' innerText="Next" onClick={switchNext} />
       </div>
-      <DayPanel daysList={daysList} setSelectedIndex={setSelectedIndex} />
+      <DayPanel daysList={daysList} setSelectedIndex={setSelectedIndex} selectedIndex={selectedIndex} setVisible={setVisible}/>
     </div>
   );
 };

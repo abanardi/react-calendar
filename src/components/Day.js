@@ -9,6 +9,8 @@ const Day = ({
   selected,
   today,
   setSelectedIndex,
+  selectedIndex,
+  setVisible,
 }) => {
   let conditions = 'container day';
 
@@ -23,14 +25,22 @@ const Day = ({
   if (selected) {
     conditions += ' selected';
   }
+  // console.log('Date', date);
+  // console.log('SelectedIndex', selectedIndex);
 
   return (
     <div
       className={conditions}
       onClick={
-        currentMonth
+        currentMonth && date === selectedIndex
+          ? () => {
+              setSelectedIndex(null);
+              setVisible(false);
+            }
+          : currentMonth
           ? () => {
               setSelectedIndex(date);
+              setVisible(true);
             }
           : null
       }

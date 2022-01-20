@@ -41,7 +41,9 @@ function App() {
   const [month, setMonth] = useState(dt.getMonth());
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [events, setEvents] = useState([]);
+  const [visible, setVisible] = useState(false);
   const [eventDate, setEventDate] = useState('');
+
 
   function renderEvents() {
     async function grabData() {
@@ -88,6 +90,7 @@ function App() {
     setEventDate(displayMonth + '/' + selectedIndex + '/' + displayYear);
     renderEvents();
     setDays(newDays);
+
   }, [year, month, selectedIndex]);
 
   const selectedDate = new Date(year, month);
@@ -114,8 +117,10 @@ function App() {
           dt.getFullYear()
         }
         setSelectedIndex={setSelectedIndex}
+        selectedIndex={selectedIndex}
+        setVisible={setVisible}
       />
-      <EventPanel events={events} visible={true} date={eventDate} />
+      <EventPanel events={events} visible={visible} date={eventDate} />
     </div>
   );
 }
