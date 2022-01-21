@@ -45,18 +45,26 @@ function App() {
   const [eventDate, setEventDate] = useState('');
 
 
-  function renderEvents() {
+  function renderEvents(year, month, selectedIndex) {
+  
     async function grabData() {
-      const eventsDay = collection(db, 'Year/2022/January/sixteen/events');
-      // console.log(eventsDay);
+      const eventsDay = collection(db, 'Year/2022/January/sixteen/eventss');    
       const eventsSnap = await getDocs(eventsDay);
-      const allEvents = eventsSnap.docs
+      const eventsPre = eventsSnap.docs;
+      let allEvents = [];
+      console.log(eventsPre.length);
+      if(eventsPre.length === 0){
+        allEvents =['No events to display']
+
+      }
+      else{
+      allEvents = eventsPre
         .map((doc) => doc.data())
         .map((event) => ({ ...event, time: event.time.seconds }))
         .sort((a, b) => (a.time > b.time ? 1 : -1));
-
+      }
       // console.log(allEvents[0].time);
-      const time = new Date(allEvents[0].time);
+      // const time = new Date(allEvents[0].time);
       // console.log(time.getHours());
       // console.log(time.getMinutes());
       // console.log(time);
@@ -88,7 +96,7 @@ function App() {
     const displayYear = date.getFullYear();
 
     setEventDate(displayMonth + '/' + selectedIndex + '/' + displayYear);
-    renderEvents();
+    renderEvents(year, month, selectedIndex);
     setDays(newDays);
 
   }, [year, month, selectedIndex]);
