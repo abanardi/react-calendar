@@ -175,3 +175,16 @@
 .invisible {
   display: none;
 }
+
+.test {
+  font-size: large;
+  color: white;
+}
+
+.add-event-panel {
+  position: fixed;
+  display: flex;
+  background-color: rgb(29, 53, 87, 0.75);
+  height: 100%;
+  width: 100%;
+}
