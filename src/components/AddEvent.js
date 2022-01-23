@@ -1,14 +1,22 @@
-import React from 'react'
+/** @format */
+
+import React from 'react';
 import CalendarPanel from './CalendarPanel';
+import Button from './Button';
 
-const AddEvent = (visible) => {
-    return (
-        <div className='add-event-panel'>
-            <h1 className='test'>Header</h1>
-            <p classname='test'>This is just some random text that is the same size as the header for some reason.</p>
-            {/* <CalendarPanel />             */}
-        </div>
-    )
-}
+const AddEvent = ({ visible, setAddEventVisible }) => {
+  return (
+    <div className={visible ? 'add-event-panel' : 'add-event-panel invisible'}>
+      <h1 className="test">Header</h1>
+      <Button
+        className="add-event-close"
+        innerText="Close"
+        onClick={() => {
+          setAddEventVisible(false);
+        }}
+      />
+    </div>
+  );
+};
 
-export default AddEvent
+export default AddEvent;

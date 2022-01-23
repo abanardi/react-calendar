@@ -44,6 +44,7 @@ function App() {
   const [events, setEvents] = useState([]);
   const [visible, setVisible] = useState(false);
   const [eventDate, setEventDate] = useState('');
+  const [addEventVisible, setAddEventVisible] = useState(false);
 
   function renderEvents(year, month, selectedIndex) {
     async function grabData() {
@@ -76,12 +77,14 @@ function App() {
 
   function switchNextMonth() {
     setSelectedIndex(null);
+    setVisible(false);
     setMonth(month + 1);
     // console.log('Next');
   }
 
   function switchPreviousMonth() {
     setSelectedIndex(null);
+    setVisible(false);
     setMonth(month - 1);
     // console.log('Previous');
   }
@@ -125,8 +128,9 @@ function App() {
         selectedIndex={selectedIndex}
         setVisible={setVisible}
       />
-      <EventPanel events={events} visible={visible} date={eventDate} />
-      <AddEvent />
+      <EventPanel events={events} visible={visible} date={eventDate} setAddEventVisible={setAddEventVisible} />
+      <AddEvent visible={addEventVisible} setAddEventVisible={setAddEventVisible} />
+      
     </div>
   );
 }

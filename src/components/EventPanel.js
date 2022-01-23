@@ -2,8 +2,9 @@
 
 import React from 'react';
 import EventItem from './EventItem';
+import Button from './Button';
 
-const EventPanel = ({ events, visible, date }) => {
+const EventPanel = ({ events, visible, date, setAddEventVisible }) => {
   return (
     <div
       className={
@@ -44,6 +45,13 @@ const EventPanel = ({ events, visible, date }) => {
           );
         })}
       </div>
+      <Button
+        className="add-event-open"
+        innerText="Add Event"
+        onClick={() => {
+          setAddEventVisible(true);
+        }}
+      />
     </div>
   );
 };

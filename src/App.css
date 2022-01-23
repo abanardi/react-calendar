@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: space-evenly;
   height: 100vh;
+  width: 100%;
   min-height: fit-content;
   min-width: fit-content;
   background-color: #202020;
@@ -35,8 +36,8 @@
   color: white;
   border-color: #8d98a7;
   background-color: #1d3557;
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,8 +102,7 @@
   background-color: #2d3047;
 }
 
-.previous-button:hover,
-.next-button:hover {
+.btn:hover {
   color: white;
   filter: brightness(85%);
 }
@@ -124,13 +124,19 @@
 /* Event Panel */
 
 .event-panel {
+  position: relative;
   margin: 0;
   width: 35rem;
-  height: 75vh;
+  height: 90vh;
   background-color: #495867;
   min-width: 20rem;
   margin-left: 2rem;
   margin-right: 1rem;
+  overflow: hidden;
+}
+
+.event-list {
+  height: calc(100% - 5rem);
   overflow: auto;
 }
 
@@ -185,6 +191,23 @@
   position: fixed;
   display: flex;
   background-color: rgb(29, 53, 87, 0.75);
-  height: 100%;
-  width: 100%;
+  height: inherit;
+  width: inherit;
+}
+
+.add-event-open {
+  background-color: #e44643;
+  color: white;
+  position: absolute;
+  bottom: 1rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.add-event-close {
+  background-color: #e44643;
+  color: white;
 }
