@@ -190,9 +190,14 @@
 .add-event-panel {
   position: fixed;
   display: flex;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
   background-color: rgb(29, 53, 87, 0.75);
-  height: inherit;
-  width: inherit;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-event-open {
@@ -208,6 +213,56 @@
 }
 
 .add-event-close {
+  position: absolute;
   background-color: #e44643;
   color: white;
+  right: 1rem;
+}
+
+.submit-form{
+  background-color: #e44643;
+  color: white;
+}
+
+.top-panel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.top-panel > h1{
+  font-size: 3rem;
+  color: white;
+}
+
+.date-selector{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.bottom-panel{
+  display: flex;
+  width: 100%;
+  height: calc(100% - 3rem);
+}
+
+.date-selector > p{
+  color:white;
+}
+
+.right-panel{
+  width: 50%;
+}
+
+.submit-event{
+  display: flex;
+  flex-direction: column;
+}
+
+.add-event-panel > * {
+  border-width: thick;
+  border-color: greenyellow;
+  border-style: solid;
 }
