@@ -195,9 +195,11 @@
   top: 0;
   height: 100%;
   width: 100%;
+  min-width: 0%;
   background-color: rgb(29, 53, 87, 0.75);
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 
 .add-event-open {
@@ -253,16 +255,31 @@
 }
 
 .right-panel{
+  display: flex;
+  flex-direction: column;
   width: 50%;
+  justify-content:space-evenly;
+}
+
+.time-selector{
+  height: 3rem;
+  font-size: 2rem;
+  width: 15rem;
+  background-color: crimson;
+}
+
+.event-description{
+  width: 50%;
+}
+
+.submit-form{
+  width: 5rem;
 }
 
 .submit-event{
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 }
 
-.add-event-panel > * {
-  border-width: thick;
-  border-color: greenyellow;
-  border-style: solid;
-}
