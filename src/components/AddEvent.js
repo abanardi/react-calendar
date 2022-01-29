@@ -14,9 +14,10 @@ const AddEvent = ({ visible, setAddEventVisible }) => {
   }
 
   function onSubmit(e) {
+    const dt = new Date(2021, 0, 29)
+    console.log(dt);
     e.preventDefault();
     console.log(time);
-    console.log(typeof(time));
     console.log(description);
   }
   return (
