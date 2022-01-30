@@ -4,21 +4,47 @@ import React from 'react';
 import CalendarPanel from './CalendarPanel';
 import Button from './Button';
 import { useState } from 'react';
+import { doc, setDoc } from 'firebase/firestore'
+import { db } from '../firebase-config';
+import { v4 as uuidv4 } from 'uuid';
 
-const AddEvent = ({ visible, setAddEventVisible }) => {
+const AddEvent = ({ visible, setAddEventVisible, year, month, selectedIndex, manualRender, setManualRender }) => {
   const [time, setTime] = useState(null);
   const [description, setDescription] = useState(null);
 
   function addEvent() {
-    console.log('Added event');
+    if(time === null || description === ''){
+      return
+    }  
+    const hour = time.substr(0,2);
+    const minute = time.substr(3,4);
+    const dt = new Date(year, month, selectedIndex, hour, minute);
+    const { v4: uuidv4 } = require('uuid')
+    const id = uuidv4();
+    
+    async function addDatabase(){
+      // console.log('Running Database');
+      const eventPath = year + '/' + month + '/' + selectedIndex + '/events' + '/' + id; 
+      // console.log(eventPath);
+      await setDoc(doc(db, 'Year/' + eventPath), {
+        id: id,
+        innerText: description,
+        time: dt
+      })
+    }
+
+    addDatabase();
+
   }
 
   function onSubmit(e) {
-    const dt = new Date(2021, 0, 29)
-    console.log(dt);
     e.preventDefault();
-    console.log(time);
-    console.log(description);
+    console.log(manualRender);
+    const reverse = !manualRender;
+    console.log(reverse);
+    setManualRender(reverse);
+    addEvent();
+
   }
   return (
     <div className={visible ? 'add-event-panel' : 'add-event-panel invisible'}>
@@ -34,9 +60,9 @@ const AddEvent = ({ visible, setAddEventVisible }) => {
       </div>
 
       <div className="bottom-panel">
-        <div className="date-selector">
+        {/* <div className="date-selector">
           <Button className="submit-form" innerText="Test Button" />
-        </div>
+        </div> */}
         <div className="right-panel">
           <form className="submit-event" onSubmit={onSubmit}>
             <input

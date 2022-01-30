@@ -194,8 +194,8 @@
   left: 0;
   top: 0;
   height: 100%;
-  width: 100%;
-  min-width: 0%;
+  width: 50%;
+  min-width: 42rem;
   background-color: rgb(29, 53, 87, 0.75);
   justify-content: center;
   align-items: center;
@@ -257,8 +257,9 @@
 .right-panel{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   justify-content:space-evenly;
+  align-items: center;
 }
 
 .time-selector{
@@ -269,7 +270,7 @@
 }
 
 .event-description{
-  width: 50%;
+  width: 100%;
 }
 
 .submit-form{

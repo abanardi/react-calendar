@@ -34,13 +34,17 @@ const EventPanel = ({ events, visible, date, setAddEventVisible }) => {
             ? (hourDigit = 12)
             : (hourDigit = hourDigit);
 
-          const timeString = hourDigit + ':' + minuteDigit + ' ' + postDigit;
+          if(minuteDigit < 10 && minuteDigit != 0){
+            minuteDigit = '0' + minuteDigit;
+          }
 
+          const timeString = hourDigit + ':' + minuteDigit + ' ' + postDigit;
+          // console.log(event.time);
           return (
             <EventItem
               innerText={event.innerText}
               time={timeString}
-              complete={Date.now() > event.time ? true : false}
+              complete={Date.now() > date ? true : false}
             />
           );
         })}

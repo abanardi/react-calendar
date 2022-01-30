@@ -45,16 +45,20 @@ function App() {
   const [visible, setVisible] = useState(false);
   const [eventDate, setEventDate] = useState('');
   const [addEventVisible, setAddEventVisible] = useState(false);
+  const [manualRender, setManualRender] = useState(true);
 
   function renderEvents(year, month, selectedIndex) {
     async function grabData() {
-      const eventsDay = collection(db, 'Year/2022/January/sixteen/events');
+      const eventPath = year + '/' + month + '/' + selectedIndex;
+      // console.log(eventPath);
+      const eventsDay = collection(db, 'Year/' + eventPath + '/events');
       const eventsSnap = await getDocs(eventsDay);
       const eventsPre = eventsSnap.docs;
+      // console.log(eventsPre);
       let allEvents = [];
       // console.log(eventsPre.length);
       if (eventsPre.length === 0) {
-        allEvents = ['No events to display'];
+        allEvents = [];
       } else {
         // console.log('Events found');
         allEvents = eventsPre
@@ -69,7 +73,7 @@ function App() {
       // console.log(time);
       // console.log(time.getHours());
       // console.log(time.getMinutes());
-
+      // console.log(events);
       setEvents(allEvents);
     }
     grabData();
@@ -89,7 +93,6 @@ function App() {
     // console.log('Previous');
   }
 
-  
   useEffect(() => {
     const newDays = renderCalendar(year, month, selectedIndex);
     const date = new Date(year, month);
@@ -100,7 +103,7 @@ function App() {
     setEventDate(displayMonth + '/' + selectedIndex + '/' + displayYear);
     renderEvents(year, month, selectedIndex);
     setDays(newDays);
-  }, [year, month, selectedIndex]);
+  }, [year, month, selectedIndex, manualRender]);
 
   const selectedDate = new Date(year, month);
   // console.log(year);
@@ -129,9 +132,21 @@ function App() {
         selectedIndex={selectedIndex}
         setVisible={setVisible}
       />
-      <EventPanel events={events} visible={visible} date={eventDate} setAddEventVisible={setAddEventVisible} />
-      <AddEvent visible={addEventVisible} setAddEventVisible={setAddEventVisible} />
-      
+      <EventPanel
+        events={events}
+        visible={visible}
+        date={eventDate}
+        setAddEventVisible={setAddEventVisible}
+      />
+      <AddEvent
+        visible={addEventVisible}
+        setAddEventVisible={setAddEventVisible}
+        year={year}
+        month={month}
+        selectedIndex={selectedIndex}
+        manualRender={manualRender}
+        setManualRender={setManualRender}
+      />
     </div>
   );
 }
